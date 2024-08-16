@@ -5,7 +5,7 @@ import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
   AiOutlineTwitter,
-  AiFillInstagram,
+  AiFillAccountBook,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -102,7 +102,7 @@ function Home2() {
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
                 >
-                  <AiFillInstagram />
+                  <AiFillAccountBook />
                 </a>
               </li>
             </ul>
