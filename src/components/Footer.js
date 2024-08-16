@@ -3,7 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import {
   AiFillGithub,
   AiOutlineTwitter,
-  AiFillInstagram,
+  AiFillBook,
+  AiFillMediumCircle
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -17,7 +18,7 @@ function Footer() {
           <h3></h3>
         </Col>
         <Col md="4" className="footer-copywright">
-          <h3>Copyright © {year} SB</h3>
+          <h3>Copyright © {year}</h3>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
@@ -33,12 +34,12 @@ function Footer() {
               </li>
               <li className="social-icons">
                 <a
-                  href="about:blank"
+                  href="https://medium.com/@sobhit.me"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
                 >
-                  <AiOutlineTwitter />
+                  <AiFillMediumCircle />
                 </a>
               </li>
               <li className="social-icons">
@@ -53,12 +54,12 @@ function Footer() {
               </li>
               <li className="social-icons">
                 <a
-                  href="about:blank"
+                  href="https://substack.com/@shobhit999"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
                 >
-                  <AiFillInstagram />
+                  <AiFillBook />
                 </a>
               </li>
             </ul>

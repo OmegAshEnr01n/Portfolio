@@ -6,6 +6,9 @@ import {
   AiFillGithub,
   AiOutlineTwitter,
   AiFillAccountBook,
+  AiFillMediumCircle,
+  AiFillBook,
+  
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -19,10 +22,9 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
+              Give me the most difficult problem you can find, I'll find a way to fix it. ;)
               <br />
-              <br />I am fluent in classics like
+              <br />Languages I love to work with are
               <i>
                 <b className="purple"> C++, Python and JS. </b>
               </i>
@@ -60,29 +62,17 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
-            <p>
-              Feel free to <span className="purple">connect </span>with me
-            </p>
+            <h1>You can check out my blogs here</h1>
+            
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href="https://github.com/OmegAshEnr01n"
+                  href="https://medium.com/@sobhit.me"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
                 >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="about:blank"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
+                  <AiFillMediumCircle />
                 </a>
               </li>
               <li className="social-icons">
@@ -97,12 +87,12 @@ function Home2() {
               </li>
               <li className="social-icons">
                 <a
-                  href="about:blank"
+                  href="https://substack.com/@shobhit999"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
                 >
-                  <AiFillAccountBook />
+                  <AiFillBook />
                 </a>
               </li>
             </ul>

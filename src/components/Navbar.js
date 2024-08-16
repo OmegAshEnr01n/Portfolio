@@ -94,7 +94,7 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                href="about:blank"
+                href="https://medium.com/@sobhit.me"
                 target="_blank"
                 rel="noreferrer"
               >
