@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+jest.mock('./components/Home/WireframeVisual', () => () => null);
+jest.mock('./components/ScrollToTop', () => () => null);
+
+test('renders the editorial homepage', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /notes from the edge/i })).toBeInTheDocument();
 });

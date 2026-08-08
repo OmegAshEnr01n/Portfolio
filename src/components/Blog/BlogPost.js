@@ -1,12 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import ReactDOM from "react-dom";
 import { useParams, Link } from "react-router-dom";
-import { marked } from "marked";
+import { marked, Renderer } from "marked";
 import { HiArrowLeft } from "react-icons/hi2";
+import MermaidDiagram from "./MermaidDiagram";
 import "../../redesign.css";
 
 /* Pull the YAML-ish frontmatter off the top of a post and strip the leading
    H1 (we render the title from frontmatter so it isn't duplicated). */
-function parseDoc(text) {
+function renderMarkdown(body) {
+  const renderer = new Renderer();
+  const defaultCode = renderer.code.bind(renderer);
+
+  renderer.code = (code, language, escaped) => {
+    if (language?.trim().toLowerCase() === "mermaid") {
+      return `<div class="rd-mermaid-mount" data-mermaid-source="${encodeURIComponent(code)}"></div>`;
+    }
+    return defaultCode(code, language, escaped);
+  };
+
+  return marked.parse(body, { breaks: false, gfm: true, renderer });
+}
+
+export function parseDoc(text) {
   const meta = {};
   let body = text;
   const fm = text.match(/^---\n([\s\S]*?)\n---\n?/);
@@ -24,7 +40,7 @@ function parseDoc(text) {
   // drop the leading H1 (we render the title from frontmatter); tolerate the
   // blank line left behind after the frontmatter block.
   body = body.replace(/^\s*#\s+.*(\r?\n)+/, "");
-  return { meta, body };
+  return { meta, body: renderMarkdown(body) };
 }
 
 function formatDate(value) {
@@ -38,6 +54,7 @@ function formatDate(value) {
 export default function BlogPost() {
   const { slug } = useParams();
   const [state, setState] = useState({ status: "loading" });
+  const bodyRef = useRef(null);
 
   useEffect(() => {
     let active = true;
@@ -50,8 +67,7 @@ export default function BlogPost() {
       .then((text) => {
         if (!active) return;
         const { meta, body } = parseDoc(text);
-        marked.setOptions({ gfm: true, breaks: false });
-        setState({ status: "ok", meta, html: marked.parse(body) });
+        setState({ status: "ok", meta, html: body });
         window.scrollTo(0, 0);
       })
       .catch(() => active && setState({ status: "error" }));
@@ -59,6 +75,20 @@ export default function BlogPost() {
       active = false;
     };
   }, [slug]);
+
+  useEffect(() => {
+    if (state.status !== "ok" || !bodyRef.current) return undefined;
+
+    const mounts = Array.from(bodyRef.current.querySelectorAll(".rd-mermaid-mount"));
+    mounts.forEach((mount) => {
+      ReactDOM.render(
+        <MermaidDiagram code={decodeURIComponent(mount.dataset.mermaidSource)} />,
+        mount
+      );
+    });
+
+    return () => mounts.forEach((mount) => ReactDOM.unmountComponentAtNode(mount));
+  }, [state]);
 
   return (
     <div className="rd rd-article">
@@ -87,6 +117,7 @@ export default function BlogPost() {
               )}
             </header>
             <div
+              ref={bodyRef}
               className="rd-post-body"
               dangerouslySetInnerHTML={{ __html: state.html }}
             />

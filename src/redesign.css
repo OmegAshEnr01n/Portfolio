@@ -428,6 +428,16 @@ body {
 .rd-post-body a:hover { border-color: var(--rd-accent); }
 .rd-post-body strong { color: var(--rd-ink); font-weight: 600; }
 .rd-post-body em { color: #d8d7e4; }
+.rd-post-body img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 1.8rem 0 0.65rem;
+  border: 1px solid var(--rd-line);
+  border-radius: 10px;
+  background: #f8f8f8;
+}
 .rd-post-body ul,
 .rd-post-body ol { margin: 0 0 1.4rem; padding-left: 1.3rem; }
 .rd-post-body li { margin: 0.4rem 0; }
@@ -482,6 +492,50 @@ body {
   border: none;
   border-top: 1px solid var(--rd-line);
   margin: 2.4rem 0;
+}
+.rd-mermaid {
+  position: relative;
+  margin: 1.8rem 0;
+  min-height: 280px;
+  overflow: hidden;
+  border: 1px solid rgba(110, 231, 214, 0.2);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(110, 231, 214, 0.08), transparent 34%),
+    radial-gradient(circle at 88% 90%, rgba(155, 140, 255, 0.1), transparent 38%),
+    #10121a;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.03), 0 18px 45px rgba(0, 0, 0, 0.2);
+}
+.rd-mermaid-canvas {
+  min-height: 280px;
+  padding: 2.8rem 1rem 1rem;
+}
+.rd-mermaid-canvas svg { width: 100%; min-height: 240px; }
+.rd-mermaid-toolbar {
+  position: absolute;
+  z-index: 1;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.35rem;
+}
+.rd-mermaid button {
+  min-width: 2.25rem;
+  min-height: 2rem;
+  padding: 0.3rem 0.55rem;
+  color: var(--rd-ink) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  background: rgba(20, 21, 29, 0.88) !important;
+}
+.rd-mermaid button:hover { border-color: var(--rd-accent-2) !important; }
+.rd-mermaid-error {
+  margin: 1.8rem 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(248, 113, 113, 0.42);
+  border-radius: 10px;
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.2);
+  font-size: 0.92rem;
 }
 
 /* ---------- minimal chrome (navbar + footer) ---------- */
@@ -571,4 +625,6 @@ body {
 }
 @media (max-width: 560px) {
   .rd-footer { flex-direction: column; text-align: center; }
+  .rd-mermaid,
+  .rd-mermaid-canvas { min-height: 220px; }
 }

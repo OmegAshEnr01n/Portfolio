@@ -3,6 +3,13 @@
    External posts use `href`. Order is reverse-chronological. */
 const posts = [
   {
+    title: "Determinism is now a dial",
+    desc: "Why AI-native systems need probabilistic reasoning above deterministic computation, not in place of it.",
+    tag: "AI systems",
+    when: "new",
+    slug: "ai-native-compute-determinism",
+  },
+  {
     title: "MLOps for high-frequency trading",
     desc: "What the model lifecycle looks like when your edge is smaller than the spread, and a runnable repo to prove it.",
     tag: "MLOps",
